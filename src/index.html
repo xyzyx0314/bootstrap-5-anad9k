@@ -1,23 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="bootstrap.min.css" rel="stylesheet">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="main.js"></script>
-</head>
+    <link href="styles.css" rel="stylesheet">
+    <link href="stylesp.css" rel="stylesheet">
 
-<body class="p-4">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
 
-  <button class="btn btn-primary">
-    Primary button
-  </button>
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="html/highlight/styles/night-owl.min.css">
+    <script src="html/highlight/highlight.min.js"></script>
+    
+    <!-- 音乐播放器 -->
+    <link rel="stylesheet" href="APlayer-master/dist/APlayer.min.css">
+    <script src="APlayer-master/dist/APlayer.min.js"></script>
+    <script src="color-thief-master/src/color-thief.js"></script>
 
-  <button class="btn btn-secondary">
-    Secondary button
-  </button>
+  </head>
 
-</body>
 
+  <body>
+      
+<!-- 上侧导航 --> 
+    <div class="m-top">
+      <div class="row">
+        <div class="person">
+          <img src="img\person.png" class="rounded-circle" alt="Cinque Terre" width="150"> 
+        </div>
+        <div class="name">
+          Journey'Blog
+        </div>
+        <div class="github" onclick="loadGithub()">
+          <img src="img\github.svg" class="rounded-circle" alt="Cinque Terre" width="150"> 
+        </div>
+        <div class="lock" onclick="loadGithub()">
+          <img src="img\lock.svg" class="rounded-circle" alt="Cinque Terre" width="150">
+        </div>
+
+        <!-- <div class="loading bk">
+          <div class="pacMan">
+            <div class="eye"></div>
+            <div class="mouth1"></div>
+            <div class="mouth2"></div>
+            <div class="beanOne"></div>
+            <div class="beanTwo"></div>
+          </div>
+        </div> -->
+
+
+        <div class="music">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </div>
+      
+    </div>
+<!-- 左侧导航 -->        
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+
+    <div class="m-lt" id="m-lt">
+      <div class="m-lt-out box-hide-scrollbar">
+        <div class="m-lt-list">
+<!-- 个人栏 -->     
+          <div class="m-lt-person">
+            <img src="img\person.png" class="rounded-circle" alt="Cinque Terre" width="150"> 
+            <div class="m-lt-per bk">
+
+              <div class="m-lt-name">Journey</div>
+              <div class="m-lt-sign">风之旅人</div>
+
+            </div>
+          </div>
+          <div class="m-lt-title">导航</div>
+<!-- 主页 -->                      
+          <button class="m-lt-card" type="button" onclick="loadHome()">
+            <img src="img\home.svg"/>
+            主页
+          </button>
+<!-- 笔记 -->                      
+          <button class="m-lt-card" type="button" onclick="loadNote()">
+            <img src="img\write.svg"/>
+            笔记
+          </button>
+<!-- 联系 -->                      
+          <button class="m-lt-card" type="button" onclick="loadConnect()">
+            <img src="img\connect.svg"/>
+            联系
+          </button>
+<!-- 打赏 -->                      
+          <button class="m-lt-card" type="button" onclick="loadReward()">
+            <img src="img\reward.svg"/>
+            投喂
+          </button>
+          <div class="m-lt-title">分组</div>
+<!-- web -->
+          <div class="m-lt-menu">
+            <div class="m-lt-card collapsed" data-bs-toggle="collapse" href="#menuWeb" >
+              <img src="img\classify.svg"/>
+              web
+              <h class="open">
+                <img src="img\open.svg"/>
+              </h>
+            </div>
+            <div id="menuWeb" class="collapse" data-bs-parent="#accordion">
+                <button class="m-lt-card" type="button" onclick="loadWeek1()">
+                  <img src="img\text.svg"/>
+                  web week 1
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadWeek2()">
+                  <img src="img\text.svg"/>
+                  web week 2
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadWeek3()">
+                  <img src="img\text.svg"/>
+                  web week 3
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadWeek4()">
+                  <img src="img\text.svg"/>
+                  web week 4
+                </button>
+            </div>
+          </div>
+<!-- 题解 -->
+          <div class="m-lt-menu">
+            <div class="m-lt-card collapsed" data-bs-toggle="collapse" href="#menuNote" >
+              <img src="img\note.svg"/>
+              题解
+              <h class="open">
+                <img src="img\open.svg"/>
+              </h>
+            </div>
+            <div id="menuNote" class="collapse" data-bs-parent="#accordion">
+
+              <button class="m-lt-card" type="button" onclick="loadCF1820()">
+                <img src="img\answer.svg"/>
+                Codeforces Round 866 (Div. 2)
+              </button>
+              <button class="m-lt-card" type="button" onclick="loadCF1826()">
+                <img src="img\answer.svg"/>
+                Codeforces Round 870 (Div. 2)
+              </button>
+              <button class="m-lt-card" type="button" onclick="loadCF1818()" id="cf1818">
+                <img src="img\answer.svg"/>
+                Codeforces Round 869 (Div. 2)
+              </button>
+            </div>
+          </div>
+<!-- 日记 -->
+          <div class="m-lt-menu">
+            <div class="m-lt-card bk collapsed" data-bs-toggle="collapse" href="#menuDaily" >
+              <img src="img\daily.svg"/>
+              日记
+              <h class="open">
+                <img src="img\open.svg"/>
+              </h>
+            </div>
+            <div id="menuDaily" class="collapse" data-bs-parent="#accordion">
+              <button class="m-lt-card" type="button" onclick="load404()">
+                <img src="img\Wrong1.gif"/>
+                Wrong 无权限查阅
+              </button>
+            </div>
+          </div>
+<!-- 网站 -->
+          <div class="m-lt-menu">
+            <div class="m-lt-card bk collapsed" data-bs-toggle="collapse" href="#menuOne" >
+              <img src="img\commonly.svg"/>
+              网站    
+              <h class="open">
+                <img src="img\left.svg"/>
+              </h>
+            </div>
+            <div id="menuOne" class="collapse" data-bs-parent="#accordion">               
+                <button class="m-lt-card" type="button" onclick="loadHZNUOJ()">
+                  <img src="img\hznuoj.svg"/>
+                  HZNUOJ
+                </button>
+
+                <button class="m-lt-card" type="button" onclick="loadCF()">
+                  <img src="img\cf.ico"/>
+                  Codeforces
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadVJ()">
+                  <img src="img\vj.ico"/>
+                  VJ
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadLuogu()">
+                  <img src="img\luogu.ico"/>
+                  洛谷
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadAT()">
+                  <img src="img\AtCoder.png"/>
+                  AtCoder
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadGE()">
+                  <img src="img\Graph.svg"/>
+                  Graph Editor
+                </button>
+                <button class="m-lt-card" type="button" onclick="loadQuanta()">
+                  <img src="img\quanta.svg"/>
+                  慢清尘慕课平台
+                </button>
+            </div>
+          </div>
+<!-- 友链 -->
+          <div class="m-lt-menu">
+            <div class="m-lt-card bk collapsed" data-bs-toggle="collapse" href="#menuTwo" >
+              <img src="img\friend.svg"/>
+              友链    
+              <h class="open">
+                <img src="img\open.svg"/>
+              </h>
+            </div>
+            <div id="menuTwo" class="collapse" data-bs-parent="#accordion">
+                <div class="m-lt-card bk">
+                  <img src="img\sdz.gif"/>
+                  广告位招租
+                </div>
+            </div>
+          </div>
+<!-- 底部留白 -->
+          <div class="m-lt-cardnone">
+            1
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 中间文章 -->
+
+
+  </div>
+  <div class="m-md" id="m-md">
+    <div class="m-md-out box-hide-scrollbar" onscroll="pageScroll()">
+      <div class="m-md-top" id="m-md-top"></div>
+      <div class="p-page" id="p-page">
+      </div>
+    </div>
+  </div>   
+<!-- 右侧目录 -->
+    <div class="m-rt">
+      <div class="m-rt-out box-hide-scrollbar">
+        <div class="p-list" id="p-list">
+        </div>
+      </div>      
+
+    </div>
+    
+<!-- 右下回顶部 -->
+    <div class="m-rtbt">
+      <a class="nav-link backtop" href="#m-md-top">
+        <img src="img/top.svg"/>
+      </a>
+      <div class="moon">
+        <img src="img/moon.svg"/>
+      </div>
+    </div>
+
+    <div id="aplayer01"></div>
+    <script type="text/javascript">
+        const ap = new APlayer({
+            container: document.getElementById('aplayer01'),
+            //theme: '#C6D7E7',
+            //theme: '#e9e9e9',
+            fixed: true,
+            lrcType: 3,
+            audio: [
+
+                {
+                    name: 'GLISTENING♭',
+                    artist: '安野希世乃',
+                    url:
+                        'music/GLISTENING♭.mp3',
+                    cover:
+                        'http://music.163.com/#/song?id=486194382',
+                    lrc:
+                        "lrc/GLISTENING♭-安野希世乃.lrc",
+                },
+            ]
+        });
+        const colorThief = new ColorThief();
+        const image = new Image();
+        const xhr = new XMLHttpRequest();
+        const setTheme = (index) => {
+            if (!ap.list.audios[index].theme) {
+                xhr.onload = function(){
+                    let coverUrl = URL.createObjectURL(this.response);
+                    image.onload = function(){
+                        let color = colorThief.getColor(image);
+                        ap.theme(`rgb(${color[0]}, ${color[1]}, ${color[2]})`, index);
+                        URL.revokeObjectURL(coverUrl)
+                    };
+                    image.src = coverUrl;
+                }
+                xhr.open('GET', ap.list.audios[index].cover, true);
+                xhr.responseType = 'blob';
+                xhr.send();
+            }
+        };
+        setTheme(ap.list.index);
+        ap.on('listswitch', (index) => {
+            setTheme(index);
+        });
+    </script>
+  </body>
+  <script src="index.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>
+    load();
+    //loadHome();
+    //loadWeek2();
+    loadConnect();
+  </script>
+  <!-- <script>
+    document.querySelector('.mouth1').style.animationPlayState = 'paused';
+    document.querySelector('.mouth2').style.animationPlayState = 'paused';
+    document.querySelector('.beanOne').style.animationPlayState = 'paused';
+    document.querySelector('.beanTwo').style.animationPlayState = 'paused';
+  </script> -->
 </html>
